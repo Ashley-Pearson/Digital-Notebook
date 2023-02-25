@@ -1,9 +1,9 @@
 const express = require('express');
 //Import routers
-const htmlRouter =require('./api');
+const notesRouter =require('./notes');
 
 const app = express();
 
-app.use('/api', apiRouter);
+app.use('/notes', notesRouter);
 
 module.exports = app;
