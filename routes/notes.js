@@ -6,13 +6,13 @@ const fs = require('fs');
 
 //GET route to get all notes
 notes.get('/', (req, res) => 
-    readFromFile('.db/db.json').then((data) => res.json(JSON.parse(data)))
+    fs.readFile('.db/db.json').then((data) => res.json(JSON.parse(data)))
 );
 
 //Route to POST new note
-notes.post('/', req, res) => {
-
-    const { title, text } = req.body;
+notes.post('/', (req, res) => {
+    // Destructuring assignment for the items in req.body
+    const { title, text} = req.body;
 
     if (title && text) {
         const newNote = {
@@ -27,8 +27,13 @@ notes.post('/', req, res) => {
             status: 'sucess',
             body: newNote,
         };
+
+        res.json(response);
+    } else {
+        res.json('Error posting new note');
     }
-}
+    });
 
-//Delete note
+//Delete note bonus
 
+module.exports = notes;
