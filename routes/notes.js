@@ -1,8 +1,8 @@
 const express = require('express');
-
+const randomUUID = require('uuid');
 const notes = require('express').Router();
 const fs = require('fs');
-
+const db =JSON.parse(fs.readFileSync('./db/db.json'));
 
 //GET route to get all notes
 notes.get('/', (req, res) => 
@@ -11,7 +11,7 @@ notes.get('/', (req, res) =>
 
 //Route to POST new note
 notes.post('/', (req, res) => {
-    // Destructuring assignment for the items in req.body
+  
     const { title, text} = req.body;
 
     if (title && text) {
@@ -19,9 +19,11 @@ notes.post('/', (req, res) => {
             title,
             text,
             title_id: randomUUID(),
-        };
+        }
+        db.push(newNote);
 
-        readAndAppend(newNote, './db/db.json');
+        fs.writeFileSync("./db/db.json", JSON.stringify(db),);
+        res.json(db);
 
         const response = {
             status: 'sucess',
