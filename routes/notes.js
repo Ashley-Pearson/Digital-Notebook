@@ -21,7 +21,12 @@ notes.post('/', req, res) => {
             title_id: randomUUID(),
         };
 
-        readAndAppend(newNote, './db/db.json')
+        readAndAppend(newNote, './db/db.json');
+
+        const response = {
+            status: 'sucess',
+            body: newNote,
+        };
     }
 }
 
