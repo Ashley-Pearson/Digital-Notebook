@@ -6,6 +6,7 @@ This application is used to write and save notes using the backend Express.js an
 ## Table of Contents
 
 - [Installation](#installtion)
+- [Deployed](#deployed)
 - [Screenshot](#screenshot)
 - [Questions](#questions)
 
@@ -16,7 +17,8 @@ After cloning the repo, to install the needed dependendicies, run the following 
 ``
 npm install 
 ``
-
+## Deployed
+https://digital-notes.herokuapp.com/
 
 ## Screenshot
 
